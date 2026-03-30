@@ -846,19 +846,19 @@
       'Novo agendamento recebido pelo site:\n\n' +
       'Nome: ' + nome + '\n' +
       'Telefone: ' + tel + '\n' +
-      'Servico: ' + servico + '\n' +
+      'Serviço: ' + servico + '\n' +
       'Data preferida: ' + dataFormatada + (periodo ? ' - ' + periodo : '') + '\n' +
-      'Descricao: ' + (problema || 'Nao informada')
+      'Descrição: ' + (problema || 'Não informada')
     );
     window.location.href = 'mailto:sulpc.contato@gmail.com?subject=' + assunto + '&body=' + corpo;
 
     setTimeout(function() {
       const msg = encodeURIComponent(
-        'Ola! Gostaria de agendar um servico pela Sul PC.\n\n' +
+        'Olá! Gostária de agendar um serviço pela Sul PC.\n\n' +
         'Nome: ' + nome + '\n' +
-        'Servico: ' + servico + '\n' +
+        'Serviço: ' + servico + '\n' +
         'Data preferida: ' + dataFormatada + (periodo ? ' - ' + periodo : '') + '\n' +
-        'Descricao: ' + (problema || 'Nao informada')
+        'Descrição: ' + (problema || 'Não informada')
       );
       window.open('https://wa.me/5551986586196?text=' + msg, '_blank');
     }, 800);
