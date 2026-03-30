@@ -841,17 +841,6 @@
 
     const dataFormatada = new Date(data + 'T12:00:00').toLocaleDateString('pt-BR');
 
-    const assunto = encodeURIComponent('Agendamento Sul PC — ' + servico);
-    const corpo = encodeURIComponent(
-      'Novo agendamento recebido pelo site:\n\n' +
-      'Nome: ' + nome + '\n' +
-      'Telefone: ' + tel + '\n' +
-      'Serviço: ' + servico + '\n' +
-      'Data preferida: ' + dataFormatada + (periodo ? ' - ' + periodo : '') + '\n' +
-      'Descrição: ' + (problema || 'Não informada')
-    );
-    window.location.href = 'mailto:sulpc.contato@gmail.com?subject=' + assunto + '&body=' + corpo;
-
     setTimeout(function() {
       const msg = encodeURIComponent(
         'Olá! Gostária de agendar um serviço pela Sul PC.\n\n' +
