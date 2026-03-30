@@ -831,11 +831,37 @@
     const tel = document.getElementById('tel').value.trim();
     const servico = document.getElementById('servico').value;
     const data = document.getElementById('data').value;
+    const periodo = document.getElementById('periodo').value;
+    const problema = document.getElementById('problema').value.trim();
 
     if (!nome || !tel || !servico || !data) {
       alert('Por favor, preencha pelo menos nome, telefone, serviço e data.');
       return;
     }
+
+    const dataFormatada = new Date(data + 'T12:00:00').toLocaleDateString('pt-BR');
+
+    const assunto = encodeURIComponent('Agendamento Sul PC — ' + servico);
+    const corpo = encodeURIComponent(
+      'Novo agendamento recebido pelo site:\n\n' +
+      'Nome: ' + nome + '\n' +
+      'Telefone: ' + tel + '\n' +
+      'Servico: ' + servico + '\n' +
+      'Data preferida: ' + dataFormatada + (periodo ? ' - ' + periodo : '') + '\n' +
+      'Descricao: ' + (problema || 'Nao informada')
+    );
+    window.location.href = 'mailto:sulpc.contato@gmail.com?subject=' + assunto + '&body=' + corpo;
+
+    setTimeout(function() {
+      const msg = encodeURIComponent(
+        'Ola! Gostaria de agendar um servico pela Sul PC.\n\n' +
+        'Nome: ' + nome + '\n' +
+        'Servico: ' + servico + '\n' +
+        'Data preferida: ' + dataFormatada + (periodo ? ' - ' + periodo : '') + '\n' +
+        'Descricao: ' + (problema || 'Nao informada')
+      );
+      window.open('https://wa.me/5551986586196?text=' + msg, '_blank');
+    }, 800);
 
     document.getElementById('form-content').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
